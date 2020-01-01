@@ -22,7 +22,13 @@ export default class Navbar extends Component {
     if (user.usertype == 'employer') {
       userConditions = <Link to="/newJob" className="btn btn-outline-success my-2 my-sm-0">Post New Job</Link>
     } else if (user.usertype == 'applicant') {
-      userConditions = <Link to="/yourJobs" className="btn btn-outline-success my-2 my-sm-0">Your Applications</Link>
+      userConditions = (
+        <div className='btn'>
+          <Link to="/yourJobs" className="btn btn-outline-success my-2 my-sm-0">Your Applications</Link>
+          <Link to="/" className="btn btn-outline-success my-2 my-sm-0">Search Page </Link>
+        </div>
+      )
+    
     }
 
       return (

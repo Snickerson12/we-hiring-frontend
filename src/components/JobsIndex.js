@@ -6,12 +6,14 @@ export default class JobsIndex extends Component {
         super(props)
         
         this.state = {
-            data: ''
+            data: '',
+            submitted: false
         }
     }
 
     handleApply = (e) => {
         e.preventDefault()
+        console.log('handle apply', this.props)
         if (this.props.user.id) {
             const newApplication = {applicant_id: this.props.user.id, job_id: this.props.job.id, applicant_name: this.props.user.name}
             const reqObj = {
