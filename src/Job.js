@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import JobsIndex from './components/JobsIndex'
-import SearchForm from './components/SearchForm'
 
 const API = 'http://localhost:3000/jobs'
 
@@ -9,7 +8,15 @@ class Job extends Component {
     jobs: []
   }
 
-  async componentDidMount() {
+  // async componentDidMount() {
+  //   let resp = await fetch(API)
+  //   let jobs = await resp.json()
+  //   this.setState({
+  //     jobs
+  //   })
+  // }
+
+  async fetchJobs() {
     let resp = await fetch(API)
     let jobs = await resp.json()
     this.setState({
@@ -18,7 +25,7 @@ class Job extends Component {
   }
 
   render() {
-    console.log(this.props)
+    this.fetchJobs()
     const jobs = this.state.jobs.map(job => {
       //sends props to JobsIndex
       return <JobsIndex routerParams={this.props} job={job} user={this.props.user} updateAuth={this.props.updateAuth}/>
